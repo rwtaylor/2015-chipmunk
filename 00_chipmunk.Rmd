@@ -1,0 +1,224 @@
+---
+output:
+  html_document:
+    css: fix_tables.css
+---
+
+
+```{r echo=FALSE, results=FALSE}
+library(dplyr)
+library(data.table)
+library(ggplot2)
+library(foreach)
+library(lme4)
+library(knitr)
+
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length=n+1)
+  hcl(h=hues, l=65, c=100)[1:n]
+}
+
+
+dat <- fread("data.csv")
+dat$trapy <- dat$trap
+dat$yr <- dat$year
+dat$trait <- dat$trap
+dat$env <- dat$dispo
+dat$env2[dat$env == "good"] <- "High acorn crop"
+dat$env2[dat$env == "bad"] <- "Low acorn crop"
+```
+
+#Chipmunk personality
+
+## A quick look at some published chipmunk data
+
+Note that I have 'jittered' both axes because both variables are integers and there are overlapping points.
+
+```{r, fig.width=6, fig.height=3.25}
+ggplot(dat, aes(x = jitter(trait), y = jitter(ars))) + geom_point(alpha = 0.7) + facet_wrap( ~ env2, nrow = 1) + ylab("Annual Reproductive Success") + xlab("Trappability")
+```
+
+Ok, it looks like there is a negative relationship between trap and ars in the high environment. To my eye, any relationship in the low environment is less obvious. It should be noted that the environments here consist of pooled years with high or low acorn production.
+
+There is a lot more variation in trappability in the low environment. 
+
+We should really be looking at relative fitness though. If we calculate relative fitness as ars / mean(ars_all_data) – then we will get the exact same relationships as above, but with a rescaled ARS. **I'm also standardizing the trait, which might be more important in this case because there seem to be big mean differences across the environments.**
+
+```{r, fig.width=6, fig.height=3.25}
+ggplot(dat, aes(x = jitter((trait - mean(trait))/sd(trait)), y = jitter(ars/mean(ars)))) + geom_point(alpha = 0.7) + facet_wrap( ~ env2, nrow = 1) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS [ars / mean(ars)]") + xlab("Trappability")
+```
+
+However, I would calculate relative ARS separately for each year. The reasoning is that ARS is an annual measure of fitness! Additionally, the average lifespan for chipmunks in this population is 1-2 years, so generation time would be about 1 year. I guess I could see an argument for scaling ARS within environments, but I definetely think scaling across both environments is no good.
+
+Here are plots of ars ~ trappability in both environments for each method of calculating relative fitness.
+
+```{r, fig.width=6, fig.height=8}
+# Scale across all data
+dat[ , ars_s := ars/mean(ars)]
+dat[ , trait_s := (trait - mean(trait))/sd(trait)]
+# Scale within year
+dat[ , ars_year := ars/mean(ars), by = "year"]
+dat[ , trait_year := (trait - mean(trait))/sd(trait), by = "year"]
+# Scale within env
+dat[ , ars_env := ars/mean(ars), by = "env"]
+dat[ , trait_env := (trait - mean(trait))/sd(trait), by = "env"]
+
+# Stack the data
+plot_data.1 <- bind_rows(dat %>% select(trait = trait_s, ars = ars_s, env2, Sex, hab, year) %>% mutate(scale = "Scaled across all years"), dat %>% select(trait = trait_year, ars = ars_year, env2, Sex, hab, year) %>% mutate(scale = "Scaled within years"), dat %>% select(trait = trait_env, ars = ars_env, env2, Sex, hab, year) %>% mutate(scale = "Scaled within environments"))
+
+# Plot
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability")
+```
+
+Ok, so now it looks like most of the relationship in the high environment is due to across year variation. More on that later, but first, in the low environment scaled within years it almost looks like there are two sets of points (above and below the regression line).
+
+```{r, fig.width=6.75, fig.height=8}
+# Plot with points colored by sex
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1)), color = Sex) + geom_point(alpha = 0.7, aes(color = Sex)) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE, aes(color = Sex)) + ylab("Relative ARS ") + xlab("Trappability")
+```
+
+<span style="color:#F8766D"><strong>Boom!</strong></span> Nearly all of the effect of trap on ARS in the low years is driven by males. So, there is possibly a three way interaciton between sex, environment and behavior on ARS. 
+
+
+## Why does scaling across-or-within years-or-environments matter?
+
+
+The trait and ARS means for each year are plotted along with individual data points.
+
+```{r, fig.width=7, fig.height=7.5}
+m_data <- plot_data.1 %>% group_by(scale, env2, year) %>% summarize(ars = mean(ars), trait = mean(trait), n = n())
+
+plot_data.2 <- bind_rows(plot_data.1 %>% select(scale, env2, ars, trait) %>% mutate(type = "individuals"), m_data %>% select(scale, env2, ars, trait) %>% mutate(type = "year means"))
+
+ggplot(plot_data.2, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1), color = type, group = type)) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability")
+
+```
+
+It's pretty clear that the negative relationship between trappability and ARS in the high acorn crop years is due to mean differences in ARS and trappability across the years.
+
+By scaling either the trait or ARS within years the between-year relationship is removed.
+
+## On what scale should relative fitness be calculated?
+
+Definetely on the scale of a generation because selection acts on the scale of a generation. But, I think fitness should also be scaled to the period that it was measured. So, if fitness is measured at an annual scale (i.e. Annual reproductive success) then it should also be scaled annually - even if generation time is much longer. Any references for this?
+
+## Models
+
+Below is the code used in the manuscript to generate selection gradients for 'good' and 'bad' environments. From the supplementary material.
+
+**From manuscript supplementary material**
+
+    tablo <- dat
+    
+    #tablo=read.table("Variables130913MartssperiphSSM.txt", sep="\t", h=T)
+    nr<-nrow(tablo)
+    nr
+    jackkslr <- list(nr)
+    for (i in 1:nr) {
+      jackkslr [[i]] <- lmer(ars/mean(ars)~-1+scale(trapy):dispo+(1|yr)+(1|ID), data= tablo[-i, ])
+    }
+    ##Store coefficients of the ith linear regressions
+    coeff.matrix <- matrix(0, nrow = nr, ncol = 2)
+    for (i in 1: nr) {
+      coeff.matrix[i, ] <- (jackkslr[[i]]@beta)
+    }
+    colnames(coeff.matrix) <- c("bad", "good")
+    ##Create a table of the i coefficients
+    seltab=data.frame(round(coeff.matrix, 2))
+    print(seltab)
+    ##Calculate the averaged coefficient, corresponding to the selection gradient and its standard deviation
+    mean(seltab$"bad"); sd(seltab$"bad")
+    mean(seltab$"good"); sd(seltab$"good")
+
+This is the key part showing how they estimate the selection differentials:
+
+    lmer(ars/mean(ars)~-1+scale(trapy):dispo+(1|yr)+(1|ID), data= tablo[-i, ]
+
+A couple of things stand out to me:
+
+  1. The intercept is suppressed.
+  2. Relative fitness and trait scaling is across years and environments (see above...).
+  3. The standard error is calculated based on the mean of the partial estimates, instead of the full data estimate.
+  4. The coefficients are reported as selection gradients, when they are really selection differentials.
+  5. Year is included as a random effect. Why doesn't this take care of the year means issue?
+
+There may be a good reason for the first point, but this is not explained in the MS. I think supressing the intercept is just a tricky way to fit models for both environments simultaneously. I don't really know though.
+
+I think 2-5 are just errors (with 2 being the greatest)
+
+Here are the results from 4 linear models, and 4 linear mixed models for 4 scaling strategies.
+
+  1. No scaling
+  2. Scaling with all data
+  3. Scaling within environments (good, bad)
+  4. Scaling within years.
+
+The table below shows the coeffients from the different models. The intercept is suppressed in all models, but for the mixed models a separate intercept is fit for each year (and shows up in the coefficients, but not in the model summary...). I don't really know what this year-intercept is (there is just 1, not a separate intercept for each environment).
+
+
+```{r}
+lm1 <- lm(ars ~ -1 + trait:env, data = dat)
+lm2 <- lm(ars_s ~ -1 + trait_s:env, data = dat)
+lm3 <- lm(ars_env ~ -1 + trait_env:env, data = dat)
+lm4 <- lm(ars_year ~ -1 + trait_year:env, data = dat)
+lmer1 <- lmer(ars ~ -1 + trait:env + (1|year), data = dat)
+lmer2 <- lmer(ars_s ~ -1 + trait_s:env + (1|year), data = dat)
+lmer3 <- lmer(ars_env ~ -1 + trait_env:env + (1|year), data = dat)
+lmer4 <- lmer(ars_year ~ -1 + trait_year:env + (1|year), data = dat)
+
+model_results <- data.table(scaling = c("None", "All", "Env", "Year"), "lm" = c("lm1", "lm2", "lm3", "lm4"), "trait:good" = c(coef(lm1)[2], coef(lm2)[2], coef(lm3)[2], coef(lm4)[2]), "trait:bad" = c(coef(lm1)[1], coef(lm2)[1], coef(lm3)[1], coef(lm4)[1]), "lmer" = c("lmer1", "lmer2", "lmer3", "lmer4"), "trait:good" = c(coef(lmer1)$year[2,3], coef(lmer2)$year[2,3], coef(lmer3)$year[2,3], coef(lmer4)$year[2,3]), "trait:bad" = c(coef(lmer1)$year[2,2], coef(lmer2)$year[2,2], coef(lmer3)$year[2,2], coef(lmer4)$year[2,2]))
+
+kable(model_results)
+```
+
+Ok, this is a little confusing.
+
+When scaled by year, the estimated coefficients are the same for the linear model and for the mixed model (lm4 and lmer4). The mixed model is fitting a separate intercept for each year, but if the intercepts for ARS & Trait are all very close to 1 then there is no difference between the mixed model and the regular model.
+
+I have no intuition for what is going on in the rest of the models. The non-scaled lm1 model makes no sense at al. Inspecting the mixed-models shows that separate intercepts are being fit for each year. But, I'm really not sure what those intercepts mean. The variable results for the mixed models show that including year as a random effect does not account for screwy scaling.
+
+
+Here are models fit for each environment separately, with normal paramters (including an intercept!)
+
+```{r}
+lm1.g <- lm(ars ~ trait, data = dat[env == "good"])
+lm2.g <- lm(ars_s ~ trait_s, data = dat[env == "good"])
+lm3.g <- lm(ars_env ~ trait_env, data = dat[env == "good"])
+lm4.g <- lm(ars_year ~ trait_year, data = dat[env == "good"])
+
+lm1.b <- lm(ars ~ trait, data = dat[env == "bad"])
+lm2.b <- lm(ars_s ~ trait_s, data = dat[env == "bad"])
+lm3.b <- lm(ars_env ~ trait_env, data = dat[env == "bad"])
+lm4.b <- lm(ars_year ~ trait_year, data = dat[env == "bad"])
+
+lmer1.g <- lmer(ars ~ trait + (1|year), data = dat[env == "good"])
+lmer2.g <- lmer(ars_s ~ trait_s + (1|year), data = dat[env == "good"])
+lmer3.g <- lmer(ars_env ~ trait_env + (1|year), data = dat[env == "good"])
+lmer4.g <- lmer(ars_year ~ trait_year + (1|year), data = dat[env == "good"])
+
+lmer1.b <- lmer(ars ~ trait + (1|year), data = dat[env == "bad"])
+lmer2.b <- lmer(ars_s ~ trait_s + (1|year), data = dat[env == "bad"])
+lmer3.b <- lmer(ars_env ~ trait_env + (1|year), data = dat[env == "bad"])
+lmer4.b <- lmer(ars_year ~ trait_year + (1|year), data = dat[env == "bad"])
+
+model_results2 <- data.table(
+  scaling = c("None", "All", "Env", "Year"),
+  lm = c("lm1", "lm2", "lm3", "lm4"),
+  "env = good" = c(coef(lm1.g)[2], coef(lm2.g)[2], coef(lm3.g)[2], coef(lm4.g)[2]),
+  "env = bad" = c(coef(lm1.b)[2], coef(lm2.b)[2], coef(lm3.b)[2], coef(lm4.b)[2]),
+  lmer = c("lmer1", "lmer2", "lmer3", "lmer4"),
+  "env = good" = c(coef(lmer1.g)$year[[2]][1], coef(lmer2.g)$year[[2]][1], coef(lmer3.g)$year[[2]][1], coef(lmer4.g)$year[[2]][1]),
+  "env = bad" = c(coef(lmer1.b)$year[[2]][1], coef(lmer2.b)$year[[2]][1], coef(lmer3.b)$year[[2]][1], coef(lmer4.b)$year[[2]][1]))
+
+kable(model_results, format = "pandoc", caption = "Models of ARS with trait:env as an interaction, no main effects, and supressed intercept (same table as above, replicated for easier reference)")
+
+kable(model_results2, format = "pandoc", caption = "Models of ARS fit separately for each environment, with an intercept and trait as a predictor.")
+```
+
+
+Ok, so these results look like just what I would expect. Additionally, the mixed models also look ok. Including year as a random effect seems to have removed most of the mean differences across years that are driving the strong negative relationship in the 'good' environment.
+
+
+For a properly scaled response it doesn't matter which model is fit!
+
+

@@ -1,0 +1,606 @@
+ind
+ind <- rep(rnorm(10, 5, sd = 5), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+dat2 <- data.frame(key = rep(1:10, 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram() + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.1) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+dat2 <- data.frame(key = rep(1:10, 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+s <- s/2#
+dat2 <- data.frame(key = rep(1:10, 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+s <- s/2#
+dat2 <- data.frame(key = rep(1:10, 10))
+dat2
+cbind(dat2, ind)
+s
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+s <- s/10#
+dat2 <- data.frame(key = rep(1:10, 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+s <- s/10#
+dat2 <- data.frame(key = rep(1:10, each = 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+s <- s/2#
+dat2 <- data.frame(key = rep(1:10, each = 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1,1,2,1,1,3,1,1,4), each = 10)#
+s <- s#
+dat2 <- data.frame(key = rep(1:10, each = 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1.5,1,2,1,3,3,0.5,1,4), each = 10)#
+s <- s#
+dat2 <- data.frame(key = rep(1:10, each = 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- as.character(dat2$key)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Aggression") + ylab("Frequency") + theme_grey(base_size = 18)
+dat2$individual <- factor(as.character(dat2$key), levels = as.character(1:10))#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Aggression") + ylab("Frequency") + theme_grey(base_size = 18)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ind <- rep(rnorm(10, 5, sd = 3), each = 10)#
+s <- rep(c(1,1.5,1,2,1,3,3,0.5,1,4), each = 10)#
+s <- s#
+dat2 <- data.frame(key = rep(1:10, each = 10))#
+for(i in 1:nrow(dat2)) {#
+  dat2$value[i] <- rnorm(1, ind[i], s[i])#
+}#
+dat2$individual <- factor(as.character(dat2$key), levels = as.character(1:10))#
+dat2 <- dat2 %>% filter(key <= 9)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Aggression") + ylab("Frequency") + theme_grey(base_size = 18)#
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_grey(base_size = 18) + facet_wrap( ~ individual)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Aggression") + ylab("Frequency") + theme_bw(base_size = 18)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Proportion of time facing predator") + ylab("Aggression") + theme_bw(base_size = 18) + facet_wrap( ~ individual)
+ggplot(dat2, aes(x = value, fill = individual)) + geom_histogram(binwidth = 0.5) + xlab("Aggression") + ylab("Frequency") + theme_bw(base_size = 18)
+load("/Users/ryantaylor/Projects/2014-male-selection/data/analyses_data/pca.RData")
+ls()
+pca_data
+hist(pca_data$misPC1)
+dat3 <- pca_data %>% group_by(ID) %>% sample_n(10)
+dat3
+?sample_n
+sample(pca_data$ID, 10)
+dat3 <- pca_data %>% filter(ID %in% sample(pca_data$ID, 10))
+dat3
+ggplot(dat3, aes(x = ID, fill = ID)) + geom_histogram()
+ggplot(dat3, aes(x = misPC1, fill = ID)) + geom_histogram()
+dat3$id <- as.character(dat3$ID)
+ggplot(dat3, aes(x = misPC1, fill = id)) + geom_histogram()
+IDs <- pca_data %>% group_by(ID) %>% summarise(n = n())
+IDs
+IDs <- IDs %>% filter(n > 10)
+IDs
+dat3 <- pca_data %>% filter(ID %in% sample(IDs, 10))#
+dat3$id <- as.character(dat3$ID)#
+ggplot(dat3, aes(x = docility, fill = id)) + geom_histogram()
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram()
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)")
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id)
+IDs <- pca_data %>% group_by(ID) %>% summarise(n = n())#
+IDs <- IDs %>% filter(n > 10)#
+dat3 <- pca_data %>% filter(ID %in% sample(IDs, 9))#
+dat3$id <- as.character(dat3$ID)#
+#
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)")
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id)
+df <- dat3 %>% group_by(ID) %>% summarise(m = mean(docil))
+df
+df <- dat3 %>% group_by(ID) %>% summarise(m = mean(docil, na.rm = TRUE))
+df
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(aes(xintercept = df$m, color = df$ID))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(df, aes(xintercept = df$m, color = df$ID))
+df$id <- as.character(df$ID)
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(df, aes(xintercept = df$m, color = df$id))
+df
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id)+ geom_vline(df, aes(xintercept = df$m, color = df$id))
+df
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id)+ geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncols = 3)+ geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = df$m))
+dat3$id
+df$id
+dat3 <- dat3 %>% arrange(ID)#
+dat3$id <- as.character(dat3$ID)#
+df <- dat3 %>% group_by(ID) %>% summarise(m = mean(docil, na.rm = TRUE))#
+df$id <- as.character(df$ID)#
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = df$m))
+df
+dat3 <- pca_data %>% filter(ID %in% sample(IDs, 9))#
+dat3 <- dat3 %>% arrange(ID)#
+dat3$id <- as.character(dat3$ID)#
+df <- dat3 %>% group_by(ID) %>% summarise(m = mean(docil, na.rm = TRUE))#
+df$id <- as.character(df$ID)#
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+dat3
+df
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = df$m))
+IDs <- pca_data %>% group_by(ID) %>% summarise(n = n())#
+IDs <- IDs %>% filter(n > 10)#
+dat3 <- pca_data %>% filter(ID %in% sample(IDs, 9))
+IDs
+sample(IDs, 9)
+sample(IDs, 1)
+sample(IDs, 2)
+sample(IDs, 10)
+?sample
+sample(IDs, 1)
+ids
+IDs
+sample_n(IDs, 1)
+sample_n(IDs, 9)
+dat3 <- pca_data %>% filter(ID %in% sample_n(IDs, 9))
+dat3
+dat3 <- pca_data %>% filter(ID %in% sample_n(IDs$ID, 9))
+dat3
+IDs$ID
+dat3 <- pca_data %>% filter(ID %in% sample_n(IDs, 9)$ID)
+IDs <- IDs %>% filter(n > 10) %>% sample_n(9)
+IDs
+dat3 <- pca_data %>% filter(ID %in% IDs$ID)#
+dat3 <- dat3 %>% arrange(ID)#
+dat3$id <- as.character(dat3$ID)#
+df <- dat3 %>% group_by(ID) %>% summarise(m = mean(docil, na.rm = TRUE))#
+df$id <- as.character(df$ID)
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = df$m))
+IDs <- pca_data %>% group_by(ID) %>% summarise(n = n())#
+IDs <- IDs %>% filter(n > 10) %>% sample_n(9)#
+dat3 <- pca_data %>% filter(ID %in% IDs$ID)#
+dat3 <- dat3 %>% arrange(ID)#
+dat3$id <- as.character(dat3$ID)#
+df <- dat3 %>% group_by(ID) %>% summarise(m = mean(docil, na.rm = TRUE))#
+df$id <- as.character(df$ID)#
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = df$m))
+dat3
+df
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = df$m, color = id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = m, color = id))
+IDs <- pca_data %>% group_by(ID) %>% summarise(n = n())#
+IDs <- IDs %>% filter(n > 10) %>% sample_n(9)#
+dat3 <- pca_data %>% filter(ID %in% IDs$ID)#
+dat3 <- dat3 %>% arrange(ID)#
+dat3$id <- as.character(dat3$ID)#
+df <- dat3 %>% group_by(ID) %>% summarise(m = mean(docil, na.rm = TRUE))#
+df$id <- as.character(df$ID)#
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = m, color = id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(data = df, aes(xintercept = df$m, color = df$id))
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)")
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + geom_vline(data = df, aes(xintercept = df$m, color = df$id), size = 2)
+ggplot(dat3, aes(x = docil, fill = id)) + geom_histogram() + theme_bw(base_size = 18) + ylab("Frequency") + xlab("Docility (seconds still)") + facet_wrap( ~ id, ncol = 3)+ geom_vline(data = df, aes(xintercept = m, color = id))
+recs <- read.csv(file = "/Users/ryantaylor/Dropbox/DraftManuscripts/What is Personality?/Data/2012_a.csv", header = TRUE, stringsAsFactors = FALSE)#
+recsb <- read.csv(file = "/Users/ryantaylor/Dropbox/DraftManuscripts/What is Personality?/Data/2012_b.csv", header = TRUE, stringsAsFactors = FALSE)#
+#
+recs <- rbind(recs, recsb)
+recs <- read.csv(file = "/Users/ryantaylor/Documents/Draft Manuscripts/What is Personality?/Data/2012_a.csv", header = TRUE, stringsAsFactors = FALSE)#
+recsb <- read.csv(file = "/Users/ryantaylor/Documents/Draft Manuscripts/What is Personality?/Data/2012_b.csv", header = TRUE, stringsAsFactors = FALSE)#
+#
+recs <- rbind(recs, recsb)
+## List of terms#
+terms <- c(#
+	"personality (trait|traits)",  #9#
+	"animal (personality|personalities)",  #1#
+	"(behavioral|behavioural) (syndrome|syndromes)",  #3#
+	"consistent individual differences",  #7#
+	"(behavioral|behavioural) type",  #8#
+	"coping (style|styles)",  #6#
+	"(temperment|temperments|temperament|temperaments)"  #4#
+)#
+termsa <- c(#
+	"animal (personality|personalities)",  #1#
+	"(personality|personalities)",  #2#
+	"(behavioral|behavioural) (syndrome|syndromes)",  #3#
+	"(temperment|temperments|temperament|temperaments)",  #4#
+	"boldness",  #5#
+	"coping (style|styles)",  #6#
+	"consistent individual differences",  #7#
+	"(behavioral|behavioural) type",  #8#
+	"personality (trait|traits)",  #9#
+	"(behavioral|behavioural) reaction (norm|norms)"  #10#
+)
+## get years and papers per year#
+years <- data.frame(table(recs$PY))#
+#
+## Results DF#
+results <- data.frame(Year = years$Var1, PT = NA, AP = NA, BS = NA, CID = NA, BT = NA, CS = NA, TP = NA, total = years$Freq)#
+#
+#results <- data.frame(Year = years$Var1, AP = NA, P = NA, BS = NA, TP = NA, B = NA, CS = NA, CID = NA, BT = NA, PT = NA, BRN = NA, total = years$Freq)#
+#
+## Get annual number of papers that use each term in their title and abstract.#
+for (i in 1:length(terms)){ ## loop through each term#
+	for(j in 1:length(years$Var1)){ ## loop through each year#
+		bar <- grep(#
+			terms[i],#
+			paste(recs$AB[recs$PY==years$Var1[j]],#
+			recs$TI[recs$PY==years$Var1[j]]),#
+			ignore.case = TRUE#
+		)#
+		## find all records that include the term.#
+		if (any(bar)) {## THis is just to deal with integer(0) that grep spits out if no records contain the term. integer(0) is difficult... confuses me.#
+			results[j,i+1] <- length(bar) ## Put no. of results for term/year into results#
+		}else#
+			results[j,i+1] <- 0 ## if no results returned then 0 papers had term...#
+	}#
+}#
+results
+results$year<-as.numeric(as.character(results$Year))#
+## pull out data to plot from results. This just makes it easier to do loops for the plotting to get all the term-lines drawn.#
+	#Get 2000-2010 years. Drop "personality" term... too common. And drop boldness#
+plot.data<-results[results$year>=2000&results$year<2013,c(2:dim(results)[2])]
+plot.data
+plot(#
+	plot.data$year,#
+	plot.data$total,#
+	type="l",#
+	lty=1,#
+	lwd=3,#
+	col=c(1:8),#
+	ylim=c(0,110),#
+	xlab="Year",#
+	ylab="Annual number of publications",#
+	xaxp=c(2000,2010,10),#
+	las=2#
+)
+plot(#
+	plot.data$year,#
+	plot.data$total,#
+	type="l",#
+	lty=1,#
+	lwd=3,#
+	col=c(1:8),#
+	ylim=c(0,150),#
+	xlab="Year",#
+	ylab="Annual number of publications",#
+	xaxp=c(2000,2012,12),#
+	las=2#
+)
+plot(#
+	plot.data$year,#
+	plot.data$total,#
+	type="l",#
+	lty=1,#
+	lwd=3,#
+	col=c(1:8),#
+	ylim=c(0,150),#
+	xlab="Year",#
+	ylab="Annual number of publications",#
+	xaxp=c(2000,2012,4),#
+	las=2#
+)
+ggplot(data = quad_PA_nPA_results) + geom_point(data = filter(quad_PA_nPA_results, type == "control"), mapping = aes(y = c_overlap, x = jitter(log10(rank)))) + geom_point(data = filter(quad_PA_nPA_results, type == "target"), aes(y = prop_overlap, x = log10(rank), color = factor(bootWindow)), size = 3) + facet_wrap( ~ af_thresh, ncol = 1)
+17120-1200
+17270-1200
+24,325 - 2750
+24325 - 2750
+?log
+ggplot(data = q_means, aes(x = rank, y = log2_odds)) + facet_wrap( ~ bootWindow + af_thresh)
+ggplot(data = q_means, aes(x = rank, y = log2_odds)) + geom_point() + facet_wrap( ~ bootWindow + af_thresh)
+ggplot(data = q_means, aes(x = log10(rank), y = log2_odds)) + geom_point() + facet_wrap( ~ bootWindow + af_thresh)
+?read.table
+read.fwf
+?read.fwf
+library(dplyr)
+library(tidry)
+library(tidyr
+)
+?spread
+2422.74/755.49
+250/3
+250*3
+2422.74/250
+755.49/50
+library(readr)
+?readr
+?read_csv
+library(dplyr)
+library(ggplot2)
+library(dplyr)#
+library(tidyr)#
+library(ggplot2)
+ggplot
+library(dplyr)#
+library(tidyr)#
+library(ggplot2)
+install.packages("ggplot2")
+library(dplyr)#
+library(tidyr)#
+library(ggplot2)
+install.packages("tcltk")
+20*2500
+update.packages()
+13800/4
+2600/6
+2600/6/30
+82000-37450
+.25*44550
+11137.5+5156
+2804+2792+653
+1746.36+2327+544
+6249+4617
+10312.5+(.25*8000)
+library(MCMCglmm)
+?MCMCglmm
+library(rmarkdown)
+?render
+install.packages("printr")
+install.packages(#
+  'printr',#
+  type = 'source',#
+  repos = c('http://yihui.name/xran', 'http://cran.rstudio.com')#
+)
+?printr
+library(printr)
+?printr
+8
+65*8
+ggplot(sample_coverage %>% filter(n_indiv == 8, species == "Red", us_M == 2, min_depth %in% (c(5,10,20,30))), aes(x = us_m, y = n, color = factor(min_depth), group = min_depth)) + geom_point(size = 2) + geom_line(size = 1) + ylab("Number of unique stacks") + xlab("Minimum Depth of stacks per individual") + ggtitle("us_m = Minimum stack depth, us_M = Distance allowed between stacks")
+100504*20
+35-18
+17/2
+17/3
+4*16
+48-32
+54
+?gsub
+64/6
+12*5
+96/24
+7*24
+4*12
+4*14
+293625*24
+293625*12
+9558*48
+270/40
+n
+4800/3.5
+1371*12
+update.packages()
+library(ggvis)
+hec <- as.data.frame(xtabs(Freq ~ Hair + Eye, HairEyeColor))#
+#
+hec %>% #
+  ggvis(~Hair, ~Eye, fill = ~Freq) %>% #
+  layer_rects(width = band(mult = 0.5), height = band(mult = 0.5))
+hec <- as.data.frame(xtabs(Freq ~ Hair + Eye, HairEyeColor))#
+#
+hec %>% #
+  ggvis(~Hair, ~Eye, fill = ~Freq) %>% #
+  layer_rects(width = band(mult = 0.5), height = band(mult = 0.5)) %>%#
+  scale_nominal("x", padding = 0, points = FALSE) %>%#
+  scale_nominal("y", padding = 0, points = FALSE)#
+# By setting mult to 0.5, I expect the bands to be 1/2 width#
+#
+hec %>% #
+  ggvis(~Hair, ~Eye, fill = ~Freq) %>% #
+  layer_rects(width = band(mult = 0.5), height = band(mult = 0.5)) %>%#
+  scale_nominal("x", padding = 0, points = FALSE) %>%#
+  scale_nominal("y", padding = 0, points = FALSE)
+?band
+library(dplyr)#
+library(data.table)#
+library(ggplot2)#
+library(tidyr)#
+library(ggvis)#
+library(foreach)#
+library(doMC)
+load("data/analyses_data/behavior_fitness.RData")#
+gg_color_hue <- function(n) {#
+  hues = seq(15, 375, length=n+1)#
+  hcl(h=hues, l=65, c=100)[1:n]#
+}#
+bf_data$year <- as.integer(as.character(bf_data$Year))#
+#
+bf_sum <- bf_data %>% group_by(ID, year, Sex, age, kprod, ars_all) %>% summarise(docil = sum(!is.na(docil)), misPC1 = sum(!is.na(misPC1)), ofPC1 = sum(!is.na(ofPC1)))#
+bf_sum$ars_all[!is.na(bf_sum$ars_all)] <- 1#
+bf_sum$docil[bf_sum$docil == 0] <- NA#
+bf_sum$misPC1[bf_sum$misPC1 == 0] <- NA#
+bf_sum$ofPC1[bf_sum$ofPC1 == 0] <- NA#
+#
+bf_sum <- bf_sum %>% filter(any(!is.na(ars_all), !is.na(docil), !is.na(misPC1)))#
+#
+plot_data <- gather(bf_sum, value = "dat", key = "trait", kprod:ofPC1) %>% filter(!is.na(dat), trait != "kprod", trait != "ofPC1")#
+#
+plot_data$trait <- as.character(plot_data$trait)#
+#
+plot_data$trait[plot_data$trait == "ars_all"] <- "fitness"#
+plot_data$trait[plot_data$trait == "docil"] <- "docility"#
+plot_data$trait[plot_data$trait == "misPC1"] <- "aggression & activity"#
+#
+plot_data$ID <- as.factor(plot_data$ID)#
+#
+bf_summary <- plot_data %>% group_by(ID, trait) %>% summarise(n = sum(dat), n.year = length(unique(year))) %>% group_by(trait) %>% summarise(max = max(n), max.year = max(n.year), mean = mean(n), mean.year = mean(n.year))
+bf_sum <- bf_data %>% group_by(ID, year, Sex, age, kprod, ars_all) %>% summarise(docil = sum(!is.na(docil)), misPC1 = sum(!is.na(misPC1)), ofPC1 = sum(!is.na(ofPC1)))#
+bf_sum$docil[bf_sum$docil == 0] <- NA#
+bf_sum$misPC1[bf_sum$misPC1 == 0] <- NA#
+bf_sum$ofPC1[bf_sum$ofPC1 == 0] <- NA#
+#
+bf_sum <- bf_sum %>% filter(any(!is.na(ars_all), !is.na(docil), !is.na(misPC1)))#
+#
+plot_data <- gather(bf_sum, value = "dat", key = "trait", kprod:ofPC1) %>% filter(!is.na(dat), trait != "kprod", trait != "ofPC1")#
+#
+plot_data$trait <- as.character(plot_data$trait)#
+#
+plot_data$trait[plot_data$trait == "ars_all"] <- "fitness"#
+plot_data$trait[plot_data$trait == "docil"] <- "docility"#
+plot_data$trait[plot_data$trait == "misPC1"] <- "aggression + activity"#
+#
+plot_data$ID <- as.factor(plot_data$ID)#
+pd2 <- plot_data#
+pd2$year[pd2$trait == "fitness"] <- pd2$year[pd2$trait == "fitness"] - 0.2#
+pd2$year[pd2$trait == "aggression + activity"] <- pd2$year[pd2$trait == "aggression + activity"] + 0.2
+bf_data$ID <- factor(bf_data$ID)#
+pid <- bf_data %>% select(ID) %>% distinct() %>% arrange(ID)#
+#
+pid$nID <- 1:nrow(pid)#
+#
+plot_data <- bf_data %>% filter(ID %in% pid$ID)#
+#
+pf <- plot_data %>% select(ID, year, Sex, age, fitness = ars_all) %>% distinct()#
+#
+pt <- bf_data %>% select(ID, year, julian, Sex, age, OFT = misPC1, Docil = docil) %>% distinct()#
+#
+pt <- gather(pt, key = trait, value = present, OFT:Docil)#
+pt <- pt %>% filter(!is.na(present))#
+pf <- left_join(pf, pid)#
+pt <- left_join(pt, pid)#
+#
+pf$year_x1 <- pf$year + 0.01#
+pf$year_x2 <- pf$year + 0.99#
+pf$id_y1 <- pf$nID + 0.49#
+pf$id_y2 <- pf$nID - 0.49#
+pt$year_julian <- pt$year + pt$julian/230
+643/2
+130.00/6
+1591*12
+1591*2*12
+3*30
+6*60
+0.75*200
+setwd('/Users/ryantaylor/Projects/2015-chipmunk'); library(rmarkdown); render('/Users/ryantaylor/Projects/2015-chipmunk/00_chipmunk.Rmd')
+sim_dat[ , ars_s := ars/mean(ars), by = "year"]
+sim_dat <- data.table(sim_dat)
+sim_dat[ , ars_s := ars/mean(ars), by = "year"]#
+sim_dat[ , trait_s := (trait - mean(trait))/sd(trait), by = "year"]
+ggplot(plot_data, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ year) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trait")
+ggplot(plot_data, aes(x = jitter(trait_s, amount = 0.1), y = jitter(ars_s, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ year) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trait")
+ggplot(plot_data, aes(x = jitter(trait_s, amount = 0.1), y = jitter(ars_s, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid( ~ year) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trait")
+ggplot(sim_dat, aes(x = jitter(trait_s, amount = 0.1), y = jitter(ars_s, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid( ~ year) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trait")
+n = 100#
+sim_dat <- data.table(year = as.factor(rep(c("1", "2"), each = n)), trait_mean = rep(c(10,20), each = n), ars_mean = rep(c(3,6), each = n))#
+sim_dat[ , ars := rpois(n, ars_mean), by = 'year']#
+sim_dat[ , trait := rnorm(n, trait_mean, 1), by = 'year']#
+#
+levels(sim_dat$year) <- c("1", "2", "1 & 2")#
+#
+# Combine years#
+sim_dat <- bind_rows(sim_dat, sim_dat %>% mutate(year = "1 & 2"))
+sim_dat
+sim_dat <- data.table(sim_dat)#
+sim_dat[ , ars_s := ars/mean(ars), by = "year"]#
+sim_dat[ , trait_s := (trait - mean(trait))/sd(trait), by = "year"]
+plot_data <- bind_rows(sim_dat %>% filter(year == "1 & 2") %>% mutate(scale = "Scaled across years"), sim_dat %>% filter(year != "1 & 2") %>% mutate(scale = "Scaled within years", year = "1 & 2"))
+ggplot(sim_dat, aes(x = jitter(trait_s, amount = 0.1), y = jitter(ars_s, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid( ~ scale) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trait")
+ggplot(plot_data, aes(x = jitter(trait_s, amount = 0.1), y = jitter(ars_s, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid( ~ scale) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trait")
+dat
+ggplot(dat, aes(x = jitter(trait), y = jitter(ars))) + geom_point(alpha = 0.7) + facet_wrap( ~ env2, nrow = 1) + ylab("Annual Reproductive Success") + xlab("Trappability")
+ggplot(plot_data, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability")
+# Scale across all data#
+dat[ , ars_s := ars/mean(ars)]#
+dat[ , trait_s := (trait - mean(trait))/sd(trait)]#
+# Scale within year#
+dat[ , ars_year := ars/mean(ars), by = "year"]#
+dat[ , trait_year := (trait - mean(trait))/sd(trait), by = "year"]#
+# Scale within env#
+dat[ , ars_env := ars/mean(ars), by = "env"]#
+dat[ , trait_env := (trait - mean(trait))/sd(trait), by = "env"]#
+#
+# Stack the data#
+plot_data <- bind_rows(dat %>% select(trait = trait_s, ars = ars_s, env2, Sex, hab) %>% mutate(scale = "Scaled across all years"), dat %>% select(trait = trait_year, ars = ars_year, env2, Sex, hab) %>% mutate(scale = "Scaled within years"), dat %>% select(trait = trait_env, ars = ars_env, env2, Sex, hab) %>% mutate(scale = "Scaled within environments"))#
+#
+# Plot#
+ggplot(plot_data, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability")
+# Scale across all data#
+dat[ , ars_s := ars/mean(ars)]#
+dat[ , trait_s := (trait - mean(trait))/sd(trait)]#
+# Scale within year#
+dat[ , ars_year := ars/mean(ars), by = "year"]#
+dat[ , trait_year := (trait - mean(trait))/sd(trait), by = "year"]#
+# Scale within env#
+dat[ , ars_env := ars/mean(ars), by = "env"]#
+dat[ , trait_env := (trait - mean(trait))/sd(trait), by = "env"]#
+#
+# Stack the data#
+plot_data.1 <- bind_rows(dat %>% select(trait = trait_s, ars = ars_s, env2, Sex, hab) %>% mutate(scale = "Scaled across all years"), dat %>% select(trait = trait_year, ars = ars_year, env2, Sex, hab) %>% mutate(scale = "Scaled within years"), dat %>% select(trait = trait_env, ars = ars_env, env2, Sex, hab) %>% mutate(scale = "Scaled within environments"))#
+#
+# Plot#
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability")
+m_data <- plot_data.1 %>% group_by(scale, env2, year) %>% summarize(m_ars = mean(ars), m_trait = mean(trait))
+# Scale across all data#
+dat[ , ars_s := ars/mean(ars)]#
+dat[ , trait_s := (trait - mean(trait))/sd(trait)]#
+# Scale within year#
+dat[ , ars_year := ars/mean(ars), by = "year"]#
+dat[ , trait_year := (trait - mean(trait))/sd(trait), by = "year"]#
+# Scale within env#
+dat[ , ars_env := ars/mean(ars), by = "env"]#
+dat[ , trait_env := (trait - mean(trait))/sd(trait), by = "env"]#
+#
+# Stack the data#
+plot_data.1 <- bind_rows(dat %>% select(trait = trait_s, ars = ars_s, env2, Sex, hab, year) %>% mutate(scale = "Scaled across all years"), dat %>% select(trait = trait_year, ars = ars_year, env2, Sex, hab, year) %>% mutate(scale = "Scaled within years"), dat %>% select(trait = trait_env, ars = ars_env, env2, Sex, hab, year) %>% mutate(scale = "Scaled within environments"))#
+#
+# Plot#
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability")
+m_data <- plot_data.1 %>% group_by(scale, env2, year) %>% summarize(m_ars = mean(ars), m_trait = mean(trait))
+m_data
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(m_data, aes(x = m_ars, y = m_trait, color = year))
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_ars, y = m_trait, color = year))
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_ars, y = m_trait, color = as.factor(year)))
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_ars, y = m_trait, color = as.factor(year)), size = 5)
+m_data <- plot_data.1 %>% group_by(scale, env2, year) %>% summarize(m_ars = mean(ars), m_trait = mean(trait), n = n())
+m_data
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars, color = as.factor(year)), size = 5)
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars, color = as.factor(year)), size = 5) + geom_smooth(data = m_data, aes(x = m_trait, y = m_ars), method = "lm", se = FALSE)
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE, color = gg_color_hue(2)[1]) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars, color = as.factor(year)), size = 5) + geom_smooth(data = m_data, aes(x = m_trait, y = m_ars), method = "lm", se = FALSE, color = gg_color_hue(2)[2])
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE, color = gg_color_hue(2)[1]) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars), color = gg_color_hue(2)[2]), size = 5) + geom_smooth(data = m_data, aes(x = m_trait, y = m_ars), method = "lm", se = FALSE, color = gg_color_hue(2)[2])
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE, color = gg_color_hue(2)[1]) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars), color = gg_color_hue(2)[2], size = 5) + geom_smooth(data = m_data, aes(x = m_trait, y = m_ars), method = "lm", se = FALSE, color = gg_color_hue(2)[2])
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE, color = gg_color_hue(2)[1]) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars), color = gg_color_hue(2)[2], size = 5) + geom_smooth(data = m_data, aes(x = m_trait, y = m_ars), method = "lm", se = FALSE, color = gg_color_hue(2)[2], fullrange = TRUE)
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE, color = gg_color_hue(2)[1]) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars), color = gg_color_hue(2)[2], size = 5) + geom_smooth(data = m_data, aes(x = m_trait, y = m_ars), method = "lm", se = FALSE, color = gg_color_hue(2)[2])
+?geom_smooth
+ggplot(plot_data.1, aes(x = jitter(trait, amount = 0.1), y = jitter(ars, amount = 0.1))) + geom_point(alpha = 0.7) + facet_grid(scale ~ env2) + geom_smooth(method = 'lm', se = FALSE, color = gg_color_hue(2)[1]) + ylab("Relative ARS ") + xlab("Trappability") + geom_point(data = m_data, aes(x = m_trait, y = m_ars), color = gg_color_hue(2)[2], size = 3) + geom_smooth(data = m_data, aes(x = m_trait, y = m_ars), method = "lm", se = FALSE, color = gg_color_hue(2)[2])
+setwd('/Users/ryantaylor/Projects/2015-chipmunk'); library(rmarkdown); render('/Users/ryantaylor/Projects/2015-chipmunk/00_chipmunk.Rmd')
+setwd('/Users/ryantaylor/Projects/2015-chipmunk'); library(rmarkdown); render('/Users/ryantaylor/Projects/2015-chipmunk/00_chipmunk.Rmd')
